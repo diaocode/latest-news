@@ -1,28 +1,26 @@
-name: 名称：NodeJS 与 Grunt
+name: TEST
 
-on:
-  push:
-    branches: [    分支: [ "main" ]"main" ]
-  pull_request:
-    branches: [    分支: [ "main" ]"main" ]
+on: push
 
 jobs:
   build:
-    runs-on:     运行于: ubuntu-latest
+    name : build工作
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [        节点版本: [18.x, 20.x, 22.x], 20.x, 22.x]
+        node-version: 20.X
 
     steps:
-    - uses:     - 使用：actions/checkout@v4
+    - name: 使用的版本
+      uses: actions/checkout@v4
 
-    - name:     - name: 使用 Node.js ${{ matrix.node-version }}{{ matrix.node-version }}
-      uses:       用途: actions/setup-node@v4
-      with:
-        node-version:         节点版本: ${{ matrix.node-version }}{{ matrix.node-version }}
+    - name: 安装依赖带包
+      run: 
+         npm install
+         npm run build 
 
-    - name:     - 名称: 构建
-      run: |
-        npm install
-        grunt
+
+    - name: 部署
+      uses: actions/configure-pages@v5.0.0 
+     
