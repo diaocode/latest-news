@@ -1,24 +1,57 @@
-name: TEST
+name: Build and Deploy to GitHub Pages
 
-on: push
+# 触发条件：当推送到 main 分支时运行
+on:
+  push:
+    branches: [ main ]  # 如果你的主分支是 master，请改为 master
 
+# 定义一个名为 build 的作业
 jobs:
   build:
-    name: build工作          # ✅ 修正：冒号前无空格
+    name: 构建与部署
     runs-on: ubuntu-latest
 
+    # 使用 matrix 来指定 Node.js 版本
     strategy:
       matrix:
-        node-version: 20.X
+        node-version: ['20.x']  # 使用小写 'x'，并用引号包裹为字符串
 
     steps:
-      - name: 使用的版本
+      # 步骤 1: 检出仓库代码
+      - name: 🛠 检出代码
         uses: actions/checkout@v4
 
-      - name: 安装依赖带包
+      # 步骤 2: 设置 Node.js 环境
+      - name: 📦 设置 Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # 步骤 3: 安装项目依赖
+      - name: 🔧 安装依赖
         run: |
           npm install
-          npm run build
+          # 如果你使用的是 grunt，确保 grunt-cli 已安装
+          npm install -g grunt-cli
 
-      - name: 部署
+      # 步骤 4: 运行构建命令（如 grunt build）
+      - name: 🏗 执行构建 (grunt build)
+        run: |
+          grunt build  # 请确保 package.json 中有 build 脚本或 grunt 配置
+
+      # 步骤 5: 配置 GitHub Pages
+      - name: 🌐 配置 GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          # 假设构建输出在 ./dist 或 ./public 目录
+          # 请根据你的实际构建输出目录修改
+          build-output: ./dist    # 常见输出目录：./dist, ./public, ./build 等
+          # 压缩选项（可选）
+          # single-page-application: true
+
+      # 步骤 6: 部署到 GitHub Pages
+      - name: 🚀 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist     # 构建输出的目录
