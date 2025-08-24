@@ -1,0 +1,11 @@
+{
+  
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "The label of footer link with label=Twitter linking to https://twitter.com/xmx0632"
+  },
+  "copyright": {
+    "message": "Copyright © 2024 Daily Focus.",
+    "description": "The footer copyright"
+  }
+}

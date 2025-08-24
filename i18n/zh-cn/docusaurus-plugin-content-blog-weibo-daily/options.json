@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "微博热搜",
+    "description": "The title for the blog used in SEO"
+  },
+  "description": {
+    "message": "每日微博热搜榜",
+    "description": "The description for the blog used in SEO"
+  },
+  "sidebar.title": {
+    "message": "微博热搜历史",
+    "description": "The label for the left sidebar"
+  }
+}

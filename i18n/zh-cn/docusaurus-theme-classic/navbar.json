@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "每日关注",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "每日关注",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Play Games": {
+    "message": "玩游戏",
+    "description": "Navbar item with label Play Games"
+  },
+  "item.label.All Blog Posts": {
+    "message": "所有文章",
+    "description": "Navbar item with label All Blog Posts"
+  },
+  "item.label.Weibo Hot Topics": {
+    "message": "微博热搜",
+    "description": "Navbar item with label Weibo Hot Topics"
+  },
+  "item.label.GitHub Hot Topics": {
+    "message": "GitHub项目", 
+    "description": "Navbar item with label GitHub Hot Topics"
+  }
+}

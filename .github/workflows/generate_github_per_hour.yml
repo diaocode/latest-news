@@ -1,0 +1,45 @@
+name: Generate GitHub Hourly Markdown
+
+on:
+  schedule:
+    - cron: '30 0,12 * * *'  # 每天UTC时间0:30,6:30,12:30,18:30（北京时间0:30,6:30,12:30，18:30）执行
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install openai>=1.0.0
+
+    - name: Generate GitHub Markdown
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        PRODUCTHUNT_CLIENT_ID: ${{ secrets.PRODUCTHUNT_CLIENT_ID }}
+        PRODUCTHUNT_CLIENT_SECRET: ${{ secrets.PRODUCTHUNT_CLIENT_SECRET }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: |
+        echo "Generate GitHub Markdown"
+        python scripts/github_list_to_md.py
+
+    - name: Commit files To GitHub
+      run: |
+        echo "Commit files To GitHub"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git commit -m "Generated hourly content"
+        git push -f
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

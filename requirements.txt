@@ -1,0 +1,6 @@
+requests
+beautifulsoup4
+openai>=1.0.0
+pytz
+python-dotenv
+PyYAML==6.0.2

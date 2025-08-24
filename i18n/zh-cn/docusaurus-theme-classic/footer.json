@@ -1,0 +1,70 @@
+{
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "The label of footer link with label=Twitter linking to https://twitter.com/xmx0632"
+  },
+  "copyright": {
+    "message": "Copyright © 2024 每日关注.",
+    "description": "The footer copyright"
+  },
+  "link.title.Historical hotspots": {
+    "message": "历史热点",
+    "description": "The title of the footer links column with title=Historical hotspots in the footer"
+  },
+  "link.item.label.Play Games": {
+    "message": "玩游戏",
+    "description": "The label of footer link with label=Play Games linking to https://game.tinygame.win"
+  },
+  "link.item.label.Weibo topics": {
+    "message": "微博热搜",
+    "description": "The label of footer link with label=Weibo topics linking to /weibo-daily"
+  },
+  "link.title.Community": {
+    "message": "社区",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "更多",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.All Posts": {
+    "message": "所有文章",
+    "description": "The label of footer link with label=All Posts linking to /blog"
+  },
+  "link.item.label.Weibo Hot Topics History": {
+    "message": "微博热搜历史",
+    "description": "The label of footer link with label=Weibo Hot Topics History linking to /weibo-daily"
+  },
+  "link.title.Games": {
+    "message": "Games",
+    "description": "The title of the footer links column with title=Games in the footer"
+  },
+  "link.item.label.Blog Posts": {
+    "message": "所有文章",
+    "description": "The label of footer link with label=Blog Posts linking to /blog"
+  },
+  "link.item.label.IT-Tools": {
+    "message": "IT 工具箱",
+    "description": "The label of footer link with label=IT-Tools linking to http://47.101.188.149:18010/"
+  },
+  "link.title.Social Trends": {
+    "message": "社会热点",
+    "description": "The title of the footer links column with title=Social Trends in the footer"
+  },
+  "link.item.label.Historical Trends": {
+    "message": "历史热点",
+    "description": "The label of footer link with label=Historical Trends linking to /weibo-daily"
+  },
+  "link.item.label.PDF-Tools": {
+    "message": "PDF-Tools",
+    "description": "The label of footer link with label=PDF-Tools linking to http://47.101.188.149:18011/"
+  },
+  "link.item.label.Privacy Policy": {
+    "message": "隐私政策",
+    "description": "The label of footer link with label=Privacy Policy linking to /privacy-policy"
+  },
+  "link.item.label.Cookie Policy": {
+    "message": "Cookie Policy",
+    "description": "The label of footer link with label=Cookie Policy linking to /cookie-policy"
+  }
+}

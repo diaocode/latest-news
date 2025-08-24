@@ -1,0 +1,45 @@
+name: Generate Hourly Markdown
+
+on:
+  schedule:
+    - cron: '0 0,6,12,18 * * *'  # 每天UTC时间0:00,6:00,12:00，18:00（北京时间0:00,6:00,12:00，18:00）执行
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install openai>=1.0.0
+
+    - name: Generate Markdown
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        PRODUCTHUNT_CLIENT_ID: ${{ secrets.PRODUCTHUNT_CLIENT_ID }}
+        PRODUCTHUNT_CLIENT_SECRET: ${{ secrets.PRODUCTHUNT_CLIENT_SECRET }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: |
+        python scripts/weibo_list_to_md_per_hour.py
+        python scripts/split-articles.py
+        python scripts/unwrap-articles.py
+
+    - name: Commit files To GitHub
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git commit -m "Generated hourly content"
+        git push -f
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

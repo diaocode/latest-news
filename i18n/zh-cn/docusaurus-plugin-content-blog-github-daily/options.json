@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Github 项目",
+    "description": "The title for the blog used in SEO"
+  },
+  "description": {
+    "message": "每日 Github 项目热搜榜",
+    "description": "The description for the blog used in SEO"
+  },
+  "sidebar.title": {
+    "message": "Github 项目历史榜",
+    "description": "The label for the left sidebar"
+  }
+}
