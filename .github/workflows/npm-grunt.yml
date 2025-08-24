@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    name : build工作
+    name: build工作          # ✅ 修正：冒号前无空格
     runs-on: ubuntu-latest
 
     strategy:
@@ -12,15 +12,13 @@ jobs:
         node-version: 20.X
 
     steps:
-    - name: 使用的版本
-      uses: actions/checkout@v4
+      - name: 使用的版本
+        uses: actions/checkout@v4
 
-    - name: 安装依赖带包
-      run: 
-         npm install
-         npm run build 
+      - name: 安装依赖带包
+        run: |
+          npm install
+          npm run build
 
-
-    - name: 部署
-      uses: actions/configure-pages@v5.0.0 
-     
+      - name: 部署
+        uses: actions/configure-pages@v5
