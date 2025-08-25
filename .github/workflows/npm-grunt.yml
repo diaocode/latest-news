@@ -37,7 +37,7 @@ jobs:
       # 步骤 4: 运行构建命令（如 grunt build）
       - name: 🏗 执行构建 (grunt build)
         run: |
-          grunt build  # 请确保 package.json 中有 build 脚本或 grunt 配置
+         npx grunt build
 
       # 步骤 5: 配置 GitHub Pages
       - name: 🌐 配置 GitHub Pages
